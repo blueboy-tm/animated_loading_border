@@ -29,10 +29,6 @@ class AnimatedLoadingBorder extends StatefulWidget {
   /// Default value [Colors.black]
   final Color borderColor;
 
-  /// Defines the color for the trailing part of the border
-  /// Default value [Colors.black]
-  final Color trailingBorderColor;
-
   /// Used to add child widget padding
   /// Default value [EdgeInsets.zero]
   final EdgeInsets padding;
@@ -41,10 +37,6 @@ class AnimatedLoadingBorder extends StatefulWidget {
   /// Default value [0.0]
   final int startPosition;
 
-  /// Used to set starting color of SweepGradient
-  /// Default value [true]
-  final bool isTrailingTransparent;
-
   const AnimatedLoadingBorder({
     required this.child,
     this.controller,
@@ -52,10 +44,8 @@ class AnimatedLoadingBorder extends StatefulWidget {
     this.cornerRadius = 0.0,
     this.borderWidth = 1,
     this.borderColor = Colors.black,
-    this.trailingBorderColor = Colors.black,
     this.padding = EdgeInsets.zero,
     this.startPosition = 0,
-    this.isTrailingTransparent = true,
     Key? key,
   }) : super(key: key);
 
@@ -124,8 +114,6 @@ class _AnimatedLoadingBorderState extends State<AnimatedLoadingBorder>
         cornerRadius: widget.cornerRadius,
         borderWidth: widget.borderWidth,
         borderColor: borderColor,
-        trailingBorderColor: widget.trailingBorderColor,
-        isTrailingTransparent: widget.isTrailingTransparent,
         startingPosition: widget.startPosition,
       ),
       child: Padding(

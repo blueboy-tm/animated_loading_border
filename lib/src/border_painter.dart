@@ -17,12 +17,6 @@ class BorderPainter extends CustomPainter {
   /// Color of the border
   final Color borderColor;
 
-  /// Color for the trailing part of the border
-  final Color trailingBorderColor;
-
-  /// Used to set starting color of SweepGradient
-  final bool isTrailingTransparent;
-
   /// Starting position used in SweepGradient
   final int startingPosition;
 
@@ -31,8 +25,6 @@ class BorderPainter extends CustomPainter {
     required this.cornerRadius,
     required this.borderWidth,
     required this.borderColor,
-    required this.trailingBorderColor,
-    required this.isTrailingTransparent,
     required this.startingPosition,
   }) : super(repaint: animation);
 
@@ -44,12 +36,10 @@ class BorderPainter extends CustomPainter {
     final progress = animation.value;
 
     if (progress > 0.0) {
-      paint.color = trailingBorderColor;
+      paint.color = borderColor;
       paint.shader = SweepGradient(
         colors: [
-          isTrailingTransparent
-              ? Colors.transparent
-              : borderColor.withOpacity(0.1),
+          borderColor.withOpacity(0.1),
           borderColor,
           Colors.transparent,
         ],

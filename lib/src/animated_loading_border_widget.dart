@@ -37,9 +37,9 @@ class AnimatedLoadingBorder extends StatefulWidget {
   /// Default value [EdgeInsets.zero]
   final EdgeInsets padding;
 
-  /// Used to set starting position of SweepGradient
-  /// Default value [true]
-  final bool startWithRandomPosition;
+  /// Animation start position
+  /// Default value [0.0]
+  final int startPosition;
 
   /// Used to set starting color of SweepGradient
   /// Default value [true]
@@ -54,13 +54,13 @@ class AnimatedLoadingBorder extends StatefulWidget {
     this.borderColor = Colors.black,
     this.trailingBorderColor = Colors.black,
     this.padding = EdgeInsets.zero,
-    this.startWithRandomPosition = true,
+    this.startPosition = 0,
     this.isTrailingTransparent = true,
     Key? key,
   }) : super(key: key);
 
   @override
-  _AnimatedLoadingBorderState createState() => _AnimatedLoadingBorderState();
+  State<AnimatedLoadingBorder> createState() => _AnimatedLoadingBorderState();
 }
 
 class _AnimatedLoadingBorderState extends State<AnimatedLoadingBorder>
@@ -126,8 +126,7 @@ class _AnimatedLoadingBorderState extends State<AnimatedLoadingBorder>
         borderColor: borderColor,
         trailingBorderColor: widget.trailingBorderColor,
         isTrailingTransparent: widget.isTrailingTransparent,
-        startingPosition:
-            widget.startWithRandomPosition ? getRandomNumber() : 0,
+        startingPosition: widget.startPosition,
       ),
       child: Padding(
         padding: widget.padding,
